@@ -17,4 +17,4 @@ Combinations.prototype.combine = function (start) {
     }
 };
 
-new Combinations('wxyz').combine();
+new Combinations('abc').combine();

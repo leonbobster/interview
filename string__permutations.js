@@ -1,26 +1,26 @@
-function Permutations(str) {
-    this.in = str;
+class Permutations {
+    constructor(input) {
+        this.input = input;
+        this.used = Array(input.length).fill(false);
+        this.output = '';
+    }
+
+    permute() {
+        if (this.output.length === this.input.length) {
+            console.log(this.output);
+            return;
+        }
+        for (let i = 0; i < this.input.length; i++) {
+            if (this.used[i] === false) {
+                this.output += this.input[i];
+                this.used[i] = true;
+                this.permute();
+                this.used[i] = false;
+                this.output = this.output.slice(0, -1);
+            }
+        }
+    }
 }
 
-Permutations.prototype.used = [];
-Permutations.prototype.out = [];
-Permutations.prototype.permute = function () {
-    console.log(this.out, this.used)
-    if (this.out.length === this.in.length) {
-        console.log(this.out.join(''));
-        return;
-    }
-    for (let i = 0; i < this.in.length; i++) {
-        if (this.used[i]) continue;
-        this.out.push(this.in.charAt(i));
-        this.used[i] = true;
-        this.permute();
-        this.used[i] = false;
-        this.out.pop();
-    }
-
-    console.log(this.out, this.used);
-};
-
-let p = new Permutations('ab');
+const p = new Permutations('abcd');
 p.permute();
