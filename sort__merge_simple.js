@@ -1,26 +1,29 @@
 function merge(left, right) {
-    let i = j = k = 0,
+    let i = 0,
+        j = 0,
+        k = 0,
         result = [];
 
     while (i < left.length && j < right.length) {
         result[k++] = left[i] < right[j] ? left[i++] : right[j++];
     }
 
-    while (i < left.length) result[k++] = left[i++];
-    while (j < right.length) result[k++] = right[j++];
+    while (i < left.length)
+        result[k++] = left[i++];
+
+    while (j < right.length)
+        result[k++] = right[j++];
 
     return result;
 }
 
 function mergeSortSimple(data) {
-    if (data.length < 2) return data;
+    if (data.length < 2)
+        return data;
 
-    let mid = Math.round(data.length / 2);
-    let left = data.slice(0, mid);
-    let right = data.slice(mid);
-
-    left = mergeSortSimple(left);
-    right = mergeSortSimple(right);
+    const mid = Math.round(data.length / 2);
+    const left = mergeSortSimple(data.slice(0, mid));
+    const right = mergeSortSimple(data.slice(mid));
 
     return merge(left, right);
 }

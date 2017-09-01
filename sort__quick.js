@@ -21,3 +21,5 @@ function quickSort(data) {
 }
 
 console.log(quickSort([3, 6, 1, 72, 12, 4, 2]))
+
+
